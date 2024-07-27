@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class BasePage {
     protected WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;

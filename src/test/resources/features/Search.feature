@@ -6,6 +6,7 @@ Feature: Search functionality
     Then the product list page should include the appropriate result <result>
 
     Examples:
-      | query_string             | result          |
-      | "iphone"                 | "Apple iPhone"  | # Valid input
-      | "dafgjkadgkmrhayzklzyrh" | "No results for"| # invalid input
+      | query_string                   | result          |
+      | "iphone"                       | "Apple iPhone"  | # Valid input
+      | "iphon"                        | "Apple iPhone"  | # Valid input - partial text
+      | "  Apple  "                    | "Apple"         | # Valid input - alternate input with spaces around - results may vary

@@ -1,10 +1,12 @@
 package org.postoffice.ui.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.postoffice.ui.config.Config;
 
@@ -26,7 +28,7 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public boolean isElementDisplayed(WebElement element) {
+    protected boolean isElementDisplayed(WebElement element) {
         try {
             return element.isDisplayed();
         } catch (Exception e) {
@@ -34,7 +36,7 @@ public abstract class BasePage {
         }
     }
 
-    public boolean isTextDisplayed(WebElement element, String text) {
+    protected boolean isTextDisplayed(WebElement element, String text) {
         try {
             return element.getText().equals(text);
         } catch (Exception e) {
@@ -42,7 +44,7 @@ public abstract class BasePage {
         }
     }
 
-    public boolean textContains(WebElement element, String partialText) {
+    protected boolean textContains(WebElement element, String partialText) {
         try {
             return normalizeText(element.getText()).contains(partialText);
         } catch (Exception e) {
@@ -50,7 +52,7 @@ public abstract class BasePage {
         }
     }
 
-    public boolean textContains(String sourceText, String partialText) {
+    protected boolean textContains(String sourceText, String partialText) {
         try {
             return normalizeText(sourceText).contains(partialText);
         } catch (Exception e) {
@@ -65,15 +67,19 @@ public abstract class BasePage {
         return text.replaceAll("\\s+", " ").trim();
     }
 
-    public WebElement returnResultByIndex(List<WebElement> webElements , int index) {
+    protected WebElement returnResultByIndex(List<WebElement> webElements , int index) {
         if ((index >=0) && (index < webElements.size())) {
             return webElements.get(index);
         }
         return null;
     }
 
-    public static String getPageText(WebDriver driver) {
-        WebElement bodyElement = driver.findElement(By.tagName("body"));
+    protected void waitUntilPageLoads() {
+            wait.until((ExpectedCondition<Boolean>) driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
+    }
+
+    protected String getPageText() {
+        WebElement bodyElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("body")));
         return bodyElement.getText();
     }
 }

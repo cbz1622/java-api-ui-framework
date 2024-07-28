@@ -15,10 +15,11 @@ public class SearchResultsPage extends BasePage {
     }
 
     public boolean isTextDisplayedOnItem(int index, String text) {
+        waitUntilPageLoads();
         if (returnResultByIndex(searchResults, index) != null) {
             return textContains(
                     returnResultByIndex(searchResults, index), text);
         }
-        return textContains(getPageText(driver), text);
+        return textContains(getPageText(),text);
     }
 }

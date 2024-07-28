@@ -16,6 +16,7 @@ public class HomePage extends BasePage{
     }
 
     public void searchFor(String query) {
+        waitUntilPageLoads();
         waitForVisibility(searchTextBox);
         searchTextBox.sendKeys(query);
         if (isElementDisplayed(searchSubmitButton)) {

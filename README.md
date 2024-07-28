@@ -24,7 +24,8 @@ Technical test that contains the code repo for UI and API
 
 - UI tests follow a Page Object model and is defined in [src/main/java/org/postoffice/ui/pages](src/main/java/org/postoffice/ui/pages)
 - UI Tests written in BDD style and the feature file is available in [src/test/resources/features/Search.feature](src/test/resources/features/Search.feature)
-- API tests have a request specification defined in [src/main/java/org/postoffice/api/requestSpecification](src/main/java/org/postoffice/api/requestSpecification)
+- API tests for [https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/) have a request specification defined in [src/main/java/org/postoffice/api/requestSpecification](src/main/java/org/postoffice/api/requestSpecification)
+- API tests are also written in a BDD style by leveraging RestAssured capabilities
 - Test Logs are saved in [logs](logs) folder
 
 ## Dependencies

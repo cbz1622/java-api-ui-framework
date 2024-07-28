@@ -11,6 +11,7 @@ Technical test that contains the code repo for UI and API
 3. [Dependencies]()
 4. [Compile & Running Tests]()
 5. [Configuration]()
+6. [CI]()
 
 ## Prerequisites
 - Java JDk 17 or higher
@@ -42,11 +43,12 @@ Key dependencies include:
 ### Compile
 `mvn clean compile`
 
-### Run UI tests
-`mvn test -Dtest=ui.runners.TestRunner`
+### Run UI tests - Browser mode - Run locally on a machine
+1. Set `headless = false` (default true) in [src/main/resources/ui/config.properties](src/test/resources/features/Search.feature)
+2. `mvn test -Dtest=ui.runners.TestRunner`
 
-#### Run UI tests - Headless mode
-1. Set the headless = true (default false) in [src/main/resources/ui/config.properties](src/test/resources/features/Search.feature)
+#### Run UI tests - Headless mode - Run on CI and locally on a machine 
+1. Set `headless = true` in [src/main/resources/ui/config.properties](src/test/resources/features/Search.feature)
 2. `mvn test -Dtest=ui.runners.TestRunner`
     
 ### Run API tests
@@ -59,3 +61,6 @@ Key dependencies include:
 - Available configurations for UI are in this path -  [src/main/resources/ui/config.properties](src/test/resources/features/Search.feature)
 - Available configurations for API are in this path -  [src/main/resources/api/config.properties](src/test/resources/features/Search.feature)
 
+## CI
+- The project uses GitHub actions and is configured in - [.github/workflows/maven.yaml](.github/workflows/maven.yaml)
+- Both UI and API tests are run inside the containers

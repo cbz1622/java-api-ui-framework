@@ -64,3 +64,5 @@ Key dependencies include:
 ## CI
 - The project uses GitHub actions and is configured in - [.github/workflows/maven.yaml](.github/workflows/maven.yaml)
 - Both UI and API tests are run inside the containers
+- Builds trigger on the Main branch on every push
+- Builds could be rerun from [https://github.com/cbz1622/postofice-techtest/actions](https://github.com/cbz1622/postofice-techtest/actions)

@@ -11,6 +11,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      xvfb:
+        image: "selenium/standalone-chrome:latest"
+        ports:
+          - 4444:4444
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -21,6 +27,11 @@ jobs:
           distribution: 'adopt'
           java-version: '17'
 
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
       - name: Cache Maven packages
         uses: actions/cache@v2
         with:
@@ -30,4 +41,6 @@ jobs:
             ${{ runner.os }}-maven-
 
       - name: Build and test with Maven
+        env:
+          DISPLAY: :99
         run: mvn clean install

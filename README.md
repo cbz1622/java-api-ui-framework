@@ -1,6 +1,5 @@
 # postofice-techtest
-Technical test that contains the code repo for UI and API
-
+Code repo that contains the UI and API Technical test
 ## Overview
 - This project is a Java Maven-based automation framework designed for both UI and API testing. 
 - The UI tests utilize Selenium, Cucumber, and JUnit 5, while the API tests leverage RestAssured and JUnit 5. 

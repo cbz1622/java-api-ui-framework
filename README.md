@@ -10,13 +10,15 @@ Code repo that contains the UI and API sample tests using Java
 3. [Dependencies]()
 4. [Compile & Running Tests]()
 5. [Configuration]()
-6. [CI]()
+6. [Docker]()
+7. [CI]()
 
 ## Prerequisites
 - Java JDk 17 or higher
 - Maven 3.9.4 or higher
 - An IDE (e.g., IntelliJ IDEA, Eclipse) with Maven support
 - Chrome Browser (latest)
+- Docker (optional)
 
 ## Project Structure
 ![img.png](img.png)
@@ -60,6 +62,12 @@ Key dependencies include:
 ## Configurations
 - Available configurations for UI are in this path -  [src/main/resources/ui/config.properties](src/test/resources/features/Search.feature)
 - Available configurations for API are in this path -  [src/main/resources/api/config.properties](src/test/resources/features/Search.feature)
+
+## Docker
+- Available docker file (Dockerfile) can be built using
+    `docker build -t <image_name> .`
+- To run the tests inside the docker containers
+    `docker run <image_name>`
 
 ## CI
 - The project uses GitHub actions and is configured in - [.github/workflows/maven.yaml](.github/workflows/maven.yaml)

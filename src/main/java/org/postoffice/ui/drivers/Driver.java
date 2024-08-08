@@ -34,6 +34,8 @@ public class Driver {
             ChromeOptions chromeOptions= new ChromeOptions();
             if (isHeadless) {
                 chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("no-sandbox");
+                chromeOptions.addArguments("disable-dev-shm-usage");
                 chromeOptions.addArguments("--disable-gpu");
             }
             webdriver.set(new ChromeDriver(chromeOptions));
